@@ -1,0 +1,22 @@
+@import './colors.scss';
+
+.toaster {
+  position: absolute;
+  padding: 20px 25px;
+  color: #fff;
+  min-width: 230px;
+  font-size: 13px;
+  border-radius: 6px;
+  &.error {
+    background-color: $soft-red;
+    box-shadow: 0px 10px 15px $red-shadow;
+    top: 45px;
+    left: 55px;
+  }
+  &.success {
+    background-color: $green;
+    box-shadow: 0px 10px 15px $green-shadow;
+    top: 45px;
+    right: 55px;
+  }
+}

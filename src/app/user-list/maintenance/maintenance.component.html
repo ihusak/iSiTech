@@ -1,0 +1,88 @@
+<div class="form-wrapper">
+<div class="form-header">
+@if (hasUser) {
+  <span class="title">{{userForm.get('firstName')?.value}} {{userForm.get('lastName')?.value}}</span>
+} @else {
+  <span class="title">Create new user</span>
+}
+<img [routerLink]="['/']" src="./../../../assets/close-24px.svg" alt="close">
+</div>
+<form [formGroup]="userForm" class="user-form">
+  <div class="user-form__item">
+    <label for="userName">Username*</label>
+    <input type="text" formControlName="userName" id="username">
+  </div>
+  @if (userForm.get('userName')?.errors?.['notUniq']) {
+    <div class="error">
+      <span>Not uniq</span>
+    </div>
+  }
+  <div class="user-form__item">
+    <label for="first-nam">First name*</label>
+    <input type="text" formControlName="firstName" id="first-nam">
+  </div>
+  @if (userForm.get('firstName')?.errors?.['notValid']) {
+    <div class="error">
+      <span>Not valid</span>
+    </div>
+  }
+  <div class="user-form__item">
+    <label for="last-name">Last name*</label>
+    <input type="text" formControlName="lastName" id="last-name">
+  </div>
+  @if (userForm.get('lastName')?.errors?.['notValid']) {
+    <div class="error">
+      <span>Not valid</span>
+    </div>
+  }
+  <div class="user-form__item email">
+    <label for="email">Email*</label>
+    <input type="text" formControlName="email" id="email">
+  </div>
+  @if (userForm.get('email')?.touched && userForm.get('email')?.errors?.['invalidEmail']) {
+    <div class="error">
+      <span>Invalid email</span>
+    </div>
+  }
+  <div class="user-form__item select">
+    <label for="type">Type*</label>
+    <select formControlName="type" id="type">
+      <option value="Administrator">Admin</option>
+      <option value="Driver">Driver</option>
+    </select>
+  </div>
+  @if (userForm.get('type')?.dirty && userForm.get('type')?.errors) {
+    <div class="error">
+      <span>required</span>
+    </div>
+  }
+  <div class="user-form__item">
+    <label for="password">Password*</label>
+    <input type="password" formControlName="password" id="password">
+  </div>
+  @if (userForm.get('password')?.dirty && userForm.get('password')?.errors?.['notSecurePass']) {
+    <div class="error">
+      <span>Not secured password</span>
+    </div>
+  }
+  <div class="user-form__item">
+    <label for="confirm-password">Repeat password*</label>
+    <input type="password" formControlName="confirmPassword" id="confirm-password">
+  </div>
+  @if (userForm.get('confirmPassword')?.dirty && userForm.get('confirmPassword')?.errors?.['PasswordNoMatch']) {
+    <div class="error">
+      <span>Password not matched</span>
+    </div>
+  }
+  @if (!hasUser) {
+    <div class="create-actions">
+      <button (click)="createUser()" class="btn main">Create</button>
+    </div>
+  } @else {
+    <div class="update-actions">
+      <button (click)="deleteUser()" class="btn delete">Delete</button>
+      <button (click)="updateUser()" class="btn main">Save</button>
+    </div>
+  }
+</form>
+</div>

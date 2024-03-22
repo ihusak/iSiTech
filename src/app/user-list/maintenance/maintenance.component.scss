@@ -1,0 +1,104 @@
+@import './../../shared/styles-map/colors.scss';
+app-maintenance {
+  .form-wrapper {
+    padding: 25px 30px;
+    margin-left: 25px;
+    background: $white 0% 0% no-repeat padding-box;
+    box-shadow: 0px 0px 30px $wrapper-shadow;
+    border: 1px solid $wrapper-border;
+    border-radius: 6px;
+    margin-top: 61px;
+    color: $text-color;
+    .form-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 30px;
+      .title {
+        display: inline-block;
+        font-weight: 700;
+      }
+      img {
+        cursor: pointer;
+        opacity: .9;
+      }
+    }
+    form {
+      font-size: 13px;
+      label {
+        display: block;
+      }
+      &.ng-submitted {
+        input, select {
+          &.ng-invalid {
+            border: 1px solid $soft-red;
+            &.ng-dirty {
+              border: 1px solid $soft-red;
+            }
+          }
+        }
+      }
+      input, select {
+        width: -webkit-fill-available;
+        background-color: $input-bg;
+        color: $text-color;
+        padding: 13px 15px;
+        border-radius: 6px;
+        border: transparent;
+        &.error {
+          border: 1px solid $soft-red;
+        }
+        &:focus {
+          outline: none;
+        }
+      }
+      .user-form__item {
+        padding-bottom: 15px;
+        &.select {
+          position: relative;
+          &:after {
+            content: url('../../../assets/arrow_drop_down-24px.svg');
+            position: absolute;
+            right: 16px;
+            top: 50%;
+            margin-top: -12px;
+          }
+          select {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            text-indent: 1px;
+            text-overflow: '';
+          }
+        }
+        &.email {
+          position: relative;
+          &:before {
+            content: url('../../../assets/alternate_email_black_24dp.svg');
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            margin-top: -12px;
+          }
+          input {
+            padding-left: 45px;
+          }
+        }
+      }
+      .error {
+        font-size: 13px;
+        color: $soft-red;
+        margin-top: -15px;
+        margin-bottom: 15px;
+      }
+      .create-actions, .update-actions {
+        display: flex;
+      }
+      .create-actions {
+        justify-content: center;
+      }
+      .update-actions {
+        justify-content: space-between;
+      }
+    }
+  }
+}

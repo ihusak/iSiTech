@@ -1,0 +1,23 @@
+@import './colors.scss';
+
+.btn {
+  color: #fff;
+  border-radius: 6px;
+  font-size: 14px;
+  padding: 13px 20px;
+  border-color: transparent;
+  min-width: 120px;
+  font-family: 'Helvetica';
+  cursor: pointer;
+  &.main {
+    background: $blue;
+    box-shadow: 0px 5px 8px $blue-shadow;
+  }
+  &.delete {
+    background: $red;
+    box-shadow: 0px 5px 8px $red-shadow;
+  }
+  &:hover {
+    opacity: .9;
+  }
+}

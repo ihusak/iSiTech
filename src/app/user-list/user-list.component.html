@@ -1,0 +1,36 @@
+<div class="main-wrapper">
+  <app-toaster></app-toaster>
+  <div class="main__content main__content_users-table">
+    <button [routerLink]="['maintenance']" class="btn main">Create user</button>
+    @if (list$ | async; as list) {
+      @if (!list.length) {
+        <div>Table empty</div>
+      }
+    <table [hidden]="!list.length">
+      <thead>
+        <tr>
+          <th>username</th>
+          <th>first name</th>
+          <th>last name</th>
+          <th>email</th>
+          <th>type</th>
+        </tr>
+      </thead>
+      <tbody>
+          @for (user of list; track user.id) {
+            <tr [routerLink]="['maintenance', user.id]">
+              <th>{{user.userName}}</th>
+              <th>{{user.firstName}}</th>
+              <th>{{user.lastName}}</th>
+              <th>{{user.email}}</th>
+              <th>{{user.type}}</th>
+            </tr>
+          }
+      </tbody>
+    </table>
+  }
+  </div>
+  <div class="main__content main__content_maintenance">
+    <router-outlet />
+  </div>
+</div>

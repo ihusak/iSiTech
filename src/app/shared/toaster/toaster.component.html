@@ -1,0 +1,11 @@
+@if (toasterProp && toasterProp.show) {
+  <div 
+  class="toaster" 
+  [ngClass]="{
+    'success': toasterProp.status === 'success',
+    'error': toasterProp.status === 'error'
+    }"
+  >
+  {{toasterProp.text}}
+</div>
+}
